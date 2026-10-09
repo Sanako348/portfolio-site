@@ -45,28 +45,28 @@ nav a:hover {
     gap: 30px;
 }
 
-work-card img{
+.work-card img{
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
     display: block;
 }
 
-work-card{
+.work-card{
     border: 1px solid #000000;
 }
 
-work-card h4{
+.work-card h4{
     margin: 15px 15px 5px;
 }
 
-work-card p {
+.work-card p {
     margin: 0 15px 15px;
     font-size: 14px;
     line-height: 1.6;
 }
 
-work-card:hover{
+.work-card:hover{
     opacity: 0.7;
 }
 
@@ -82,7 +82,7 @@ work-card:hover{
     font-size: 16px;
 }
 
-work-category {
+.work-category {
     font-size: 4px;
     padding-top: 14px;
     color: #9c9c9c;
@@ -91,4 +91,22 @@ work-category {
 .work-year{
     font-size: 10px;
     margin-top: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    #top {
+        padding-top: 80px;
+    }
+
+    #top img {
+        width: 100%;
+    }
+
+    #works-grid {
+        grid-template-columns:1fr;
+    }
+
+    .works-controls{
+        flex-direction: column;
+    }
 }

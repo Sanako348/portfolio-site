@@ -15,13 +15,14 @@ fetch("works.csv")
         });
 
        
-        var grid = document.getElementById("works-grid")
-        var categorySelect = document.getElementById("category")
-        var sortSelect = document.gerElementById("sort");
+        var grid = document.getElementById("works-grid");
+        var categorySelect = document.getElementById("category");
+        var sortSelect = document.getElementById("sort");
 
         var categories = [];
 
-        works.forEach(funvtion(work){
+        works.forEach(function(work){
+            if (!work.category) return;
             if (!categories.includes(work.category)){
                 categories.push(work.category);
             }
@@ -32,7 +33,7 @@ fetch("works.csv")
             option.value = category;
             option.textContent = category;
             categorySelect.appendChild(option);
-        });
+        }); 
 
         function displayWorks(){
             var selectedCategory = categorySelect.value;
@@ -47,12 +48,12 @@ fetch("works.csv")
 
             if ( sortType === "new"){
                 filteredWorks.sort(function(a,b){
-                    return Number(b.year) - Number(a.year);
+                    return Number(b.year || 0) - Number(a.year || 0);
                 });
             }
             else if (sortType === "old"){
                 filteredWorks.sort(function(a,b){
-                    return Number(a.year) - Number(b.year);
+                    return Number(a.year || 0) - Number(b.year || 0);
                 });
             }
             else if (sortType === "title"){
@@ -60,23 +61,34 @@ fetch("works.csv")
                     return a.title.localeCompare(b.title,"ja");
                 });
             }
+
+            grid.innerHTML = "";
+
             filteredWorks.forEach(function(work){
                 var card = document.createElement("article");
                 card.className = "work-card";
                 card.innerHTML =
-                    '<a href"' + work.link + '">' +
+                    '<a href="' + work.link + '">' +
                         '<img src="' + work.image + '" alt="' + work.title + '">' +
                         '<div class="work-info">' +
-                        '<p class="work-category">' + work.category + '</p>' +
-                    
-                        '<h4>' + work.title + '</h4>' +
-                        '<p>' + work.description + '</p>' +
+                        //'<p class="work-category">' + (work.category || "") + '</p>' +
+
+                            '<h4>' + work.title + '</h4>' +
+                            '<p>' + work.description + '</p>' +
+                        '</div>' +
                     '</a>';
                 grid.appendChild(card);
 
             });
         }
+        displayWorks();
+        categorySelect.addEventListener("change",function(){
+            displayWorks();
+        });
 
+        sortSelect.addEventListener("change", function(){
+            displayWorks();
+        });
         
     })
 
