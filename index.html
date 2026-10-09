@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang ="ja">
+    <head>
+        <meta charest="UTF-8">
+        <title>Sanako Sugiyama</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <a href="#top">Sanako Sugiyama</a>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#works">Works</a>
+            </nav>
+        </header>
+        <main>
+            <section id="top">
+                <img src="./media/001_1400_1050.jpg" width="80%">
+                <h1>
+                    Sanako Sugiyama<br>
+                    Portfolio
+                </h1>
+            </section>
+            <section id="about">    
+                <h3>About</h3>
+                <p>
+                    杉山　眞子<br>
+                    東京都市大学デザイン・データ科学部
+                </p>
+                <p>
+                    生年月日：2006年10月１日　
+                    出身：千葉県
+                </p>
+            </section>
+            <section id="Hobby">
+            <h3>Hobby</h3>
+            <div class="works-controls">
+                <select id="category">
+                    <option value="all">すべてのカテゴリ</option>
+                </select>
+                <select id="sort">
+                    <option value="new">新しい順</option>
+                    <option value="old">順<option>
+                    <option value="title">新しい順</option>
+                </select>
+            </div>
+            <div id="works-grid"></div>
+            </section>    
+        </main>
+        <footer>
+            <span>© 2026 Sanako Sugiyama</span>
+        </footer>
+        <script src="works.js"></script>
+    </body>
+</html>
